@@ -17,13 +17,18 @@ library(datasauRus)
 
 ### Exercise 1
 
-(Type your answer to Exercise 1 here. This exercise does not require any R code. **Remove notes like this in the final product that you turn in**)
+There are 1846 rows and 3 columns in the datasaurus_dozen file
 
 ### Exercise 2
 
-(The answers for this Exercise are given for you below. But you should clean up some of the narrative so that it only includes what you want to turn in.)
-
 First let's plot the data in the dino dataset:
+
+The pipe operator: **%>%**, takes what comes before it and sends it as the first argument to what comesafter it. So here, we’re saying **filter** the **datasaurus_dozen** data frame for observations where **dataset =="dino"**.
+
+Second, the assignment operator: <-, assigns the name dino_data to the filtered data frame
+
+Last, the **ggplot** function is used to visualize the data 
+**geom_point** is used to define which shape to use to mark/ represent each observation in the data
 
 ```{r plot-dino, fig.height=3, fig.width=6}
 dino_data <- datasaurus_dozen %>%
@@ -33,6 +38,10 @@ ggplot(data = dino_data, mapping = aes(x = x, y = y)) +
 ```
 
 And next calculate the correlation between `x` and `y` in this dataset:
+
+We need to calculate a summary statistic: the **correlation coefficient**.
+**Correlation coefficient**, often referred to as *r* in statistics, measures the linear association between two variables. You will see that some of the pairs of variables we plot do not have a linear relationship between them. This is exactly why we want to visualize first: visualize to assess the form of the relationship, and
+calculate r only if relevant. In this case, calculating a correlation coefficient really doesn’t make sense since the relationship between x and y is definitely not linear – it’s dinosaurial!
 
 ```{r cor-dino}
 dino_data %>%
